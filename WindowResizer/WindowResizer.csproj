@@ -7,10 +7,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <ApplicationManifest></ApplicationManifest>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Authors>Saica</Authors>
     <Copyright>©2024 Saica</Copyright>
+    <PackageIcon></PackageIcon>
+	<ProductVersion>1.0.0.0</ProductVersion>
+	<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	<FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -11,7 +11,7 @@
         TitleCharacterCasing="Normal"
         Title="Window Resizer"
         TitleForeground="White"
-        Height="200"
+        Height="220"
         Width="500"
         ShowMaxRestoreButton="False"
         ShowMinButton="True"
@@ -20,10 +20,9 @@
         ShowIconOnTitleBar="False"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        SaveWindowPosition="True"
         >
 
-    <Grid>
+    <Grid Margin="5,5,5,5">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -37,19 +36,19 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <ComboBox Grid.Row="0" Grid.Column="0" Width="Auto" Height="Auto" x:Name="ProcessComboBox" Margin="5,5,5,5" SelectionChanged="ProcessComboBox_SelectionChanged" Padding="5,5,5,5" />
-        <Button Grid.Row="0" Grid.Column="1" Width="37" Height="37" x:Name="Reload" Style="{StaticResource MaterialDesignIconForegroundButton}" Margin="0,6,0,6" Click="Get_p_Click" Foreground="{DynamicResource MahApps.Brushes.Accent}" HorizontalAlignment="Left">
+        <ComboBox Grid.Row="0" Grid.Column="0" Width="Auto" Height="Auto" x:Name="ProcessComboBox" Margin="5,0,5,5" SelectionChanged="ProcessComboBox_SelectionChanged" Padding="5,5,5,5" />
+        <Button Grid.Row="0" Grid.Column="1" Width="37" Height="37" x:Name="Reload" Style="{StaticResource MaterialDesignIconForegroundButton}" Margin="0,0,0,5" Click="Get_p_Click" Foreground="{DynamicResource MahApps.Brushes.Accent}" HorizontalAlignment="Left">
             <iconPacks:PackIconForkAwesome Kind="Refresh" Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Center" />
         </Button>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Reload" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="37,0,0,5" TextWrapping="Wrap" Text="Reload" VerticalAlignment="Center"/>
 
         <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Name="Width" Content="Width(横幅)" Margin="5,5,5,5" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" />
         <Slider Grid.Row="2" Grid.Column="0" x:Name="WSlider" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" AutoToolTipPlacement="TopLeft" LargeChange="10" Maximum="3840" Minimum="10" SmallChange="1" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,5" ValueChanged="WSlider_ValueChanged" />
         <mahApps:NumericUpDown Name="nUpDown1" Grid.Row="2" Grid.Column="2" Width="90" Maximum="3840" Minimum="10" Value="{Binding ElementName=WSlider, Path=Value}" Margin="5,5,5,5" Padding="0,0,0,0" />
 
         <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Name="Height" Content="Height(高さ)" Margin="5,5,5,5" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" />
-        <Slider Grid.Row="4" Grid.Column="0" x:Name="HSlider" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" AutoToolTipPlacement="TopLeft" LargeChange="10" Maximum="2160" Minimum="10" SmallChange="1" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,5" ValueChanged="HSlider_ValueChanged" />
-        <mahApps:NumericUpDown Name="nUpDown2" Grid.Row="4" Grid.Column="2" Width="90" Maximum="2160" Minimum="10" Value="{Binding ElementName=HSlider, Path=Value}" Margin="5,5,5,5" Padding="0,0,0,0" />
+        <Slider Grid.Row="4" Grid.Column="0" x:Name="HSlider" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" AutoToolTipPlacement="TopLeft" LargeChange="10" Maximum="2160" Minimum="10" SmallChange="1" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,0" ValueChanged="HSlider_ValueChanged" />
+        <mahApps:NumericUpDown Name="nUpDown2" Grid.Row="4" Grid.Column="2" Width="90" Maximum="2160" Minimum="10" Value="{Binding ElementName=HSlider, Path=Value}" Margin="5,5,5,0" Padding="0,0,0,0" />
 
     </Grid>
 </mahApps:MetroWindow>
