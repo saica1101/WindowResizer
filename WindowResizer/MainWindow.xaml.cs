@@ -1,31 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Management;
-using System.Threading.Tasks;
-using MahApps.Metro.Controls;
 using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using static MaterialDesignThemes.Wpf.Theme;
 
-namespace WindowReizer
+namespace WindowResizer
 {
     public partial class MainWindow : MahApps.Metro.Controls.MetroWindow
     {
-        [DllImport("user32.dll")]
-        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
@@ -56,6 +37,7 @@ namespace WindowReizer
         private void GetProcessList()
         {
             this.ProcessComboBox.Items.Clear();
+            // ウィンドウタイトルがNull or Empty 以外のプロセスを取得する
             var processes = Process.GetProcesses().Where(p => !string.IsNullOrEmpty(p.MainWindowTitle)).ToList();
             foreach (var process in processes)
             {
@@ -73,8 +55,19 @@ namespace WindowReizer
                 {
                     RECT rect;
                     GetWindowRect(selectedProcess.MainWindowHandle, out rect);
+
+                    // 一時的にスライダーのイベントを削除
+                    // 理由:ドロップダウンからアイテムを選択したときにスライダーの値変更イベントも呼ばれてしまうため
+                    WSlider.ValueChanged -= WSlider_ValueChanged;
+                    HSlider.ValueChanged -= HSlider_ValueChanged;
+
+                    // スライダーの値を更新
                     WSlider.Value = rect.Right - rect.Left;
                     HSlider.Value = rect.Bottom - rect.Top;
+
+                    // イベントを再度追加
+                    WSlider.ValueChanged += WSlider_ValueChanged;
+                    HSlider.ValueChanged += HSlider_ValueChanged;
                 }
             }
         }
@@ -105,6 +98,8 @@ namespace WindowReizer
         private void Get_p_Click(object sender, RoutedEventArgs e)
         {
             GetProcessList();
+            WSlider.Value = 10;
+            HSlider.Value = 10;
         }
     }
 }
