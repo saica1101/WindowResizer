@@ -1,0 +1,58 @@
+﻿<mahApps:MetroWindow x:Class="WindowReizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowReizer"
+        xmlns:mahApps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        GlowBrush="{DynamicResource MaterialDesign.Brush.Primary}"
+        BorderThickness="1"
+        TitleCharacterCasing="Normal"
+        Title="Window Resizer"
+        TitleForeground="White"
+        Height="240"
+        Width="500"
+        ShowMaxRestoreButton="False"
+        ShowMinButton="True"
+        IsMaxRestoreButtonEnabled="False"
+        IsMinButtonEnabled="True"
+        ShowIconOnTitleBar="False"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        >
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Grid.Row="0" Grid.Column="0" Width="Auto" Height="Auto" x:Name="ProcessComboBox" Margin="5,5,5,0" SelectionChanged="ProcessComboBox_SelectionChanged" Padding="0,0,0,0" />
+        <Button Grid.Row="0" Grid.Column="1"  Width="25" Height="25" x:Name="Reload" Style="{StaticResource MaterialDesignIconForegroundButton}" Click="Get_p_Click" Foreground="Silver">
+            <materialDesign:PackIcon
+                Kind="Reload"
+            />
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Name="Width" Content="Width(横幅)" Margin="5,0,5,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" />
+
+        <Slider Grid.Row="2" Grid.Column="0" x:Name="WSlider" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" AutoToolTipPlacement="TopLeft" LargeChange="10" Maximum="3840" Minimum="1" SmallChange="1" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" RenderTransformOrigin="1.0,1.0" Margin="20,5,20,0" ValueChanged="WSlider_ValueChanged" />
+        <mahApps:NumericUpDown Name="nUpDown1" Grid.Row="2" Grid.Column="2" Width="90" Maximum="3840" Minimum="10" Value="{Binding ElementName=WSlider, Path=Value}" Margin="0,0,5,0" Padding="0,0,0,0" />
+
+        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Name="Height" Content="Height(高さ)" Margin="5,0,5,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" />
+
+        <Slider Grid.Row="4" Grid.Column="0" x:Name="HSlider" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" AutoToolTipPlacement="TopLeft" LargeChange="10" Maximum="2160" Minimum="1" SmallChange="1" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" RenderTransformOrigin="1.0,1.0" Margin="20,5,20,0" ValueChanged="HSlider_ValueChanged" />
+        <mahApps:NumericUpDown Name="nUpDown2" Grid.Row="4" Grid.Column="2" Width="90" Maximum="2160" Minimum="10" Value="{Binding ElementName=HSlider, Path=Value}" Margin="0,0,5,0" Padding="0,0,0,0" />
+
+    </Grid>
+</mahApps:MetroWindow>
